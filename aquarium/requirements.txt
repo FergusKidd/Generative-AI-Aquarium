@@ -1,0 +1,4 @@
+pygame
+numpy==1.26.1
+python-dotenv
+azure-storage-blob

@@ -15,10 +15,10 @@ import {
   useToast,
 } from '@chakra-ui/react'
 import { useMutation, useQueries } from '@tanstack/react-query'
+import { Dice6, Mic, Send } from 'lucide-react'
 import Head from 'next/head'
 import { useEffect, useState } from 'react'
-import { FaDice, FaMicrophone } from 'react-icons/fa'
-import { FiSend } from 'react-icons/fi'
+
 import SpeechRecognition, {
   useSpeechRecognition,
 } from 'react-speech-recognition'
@@ -236,7 +236,7 @@ const Home: React.FC = () => {
                     bg={listening ? 'gray.300' : 'initial'}
                     onClick={handleMicClick}
                     size="sm"
-                    icon={<FaMicrophone />}
+                    icon={<Mic size="15px" />}
                   />
                   <IconButton
                     aria-label="send"
@@ -244,7 +244,7 @@ const Home: React.FC = () => {
                     isDisabled={randomLoading || fetch}
                     size="sm"
                     onClick={() => randomMutate()}
-                    icon={<FaDice />}
+                    icon={<Dice6 size="15px" />}
                   />
                   <IconButton
                     aria-label="send"
@@ -252,7 +252,7 @@ const Home: React.FC = () => {
                     isDisabled={inputStr.trim() === '' || fetch}
                     type="submit"
                     size="sm"
-                    icon={<FiSend />}
+                    icon={<Send size="15px" />}
                   />
                 </VStack>
               </Box>

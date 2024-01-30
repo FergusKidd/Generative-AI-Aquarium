@@ -1,14 +1,15 @@
-import { NextApiRequest, NextApiResponse } from "next";
-import { openaiClient } from "@/library/openaiClient";
+import { openaiClient } from '@/library/openaiClient'
+import { ChatRequestMessage } from '@azure/openai'
+import { NextApiRequest, NextApiResponse } from 'next'
 
 /**
  * Interface for the response from the Azure Open AI service ( Seems to be Incorrect in the Package)
  */
 interface GenerateImageResponse {
-  created: number;
+  created: number
   data: Array<{
-    url: string;
-  }>;
+    url: string
+  }>
 }
 
 /**
@@ -21,32 +22,36 @@ interface GenerateImageResponse {
  */
 export default async function handler(
   req: NextApiRequest,
-  res: NextApiResponse
+  res: NextApiResponse,
 ) {
   try {
-    const messages = [
+    const messages: ChatRequestMessage[] = [
       {
-        role: "system",
+        role: 'system',
         content:
-          "Your primary role is to write prompts optimised for Open AI Dalle to generate images. Always create interesting ideas, only write the prompt itself rather than the instruction",
+          'Your primary role is to write prompts optimised for Open AI Dalle to generate images. Always create interesting ideas, only write the prompt itself rather than the instruction',
       },
-      { role: "user", content: "I want a random desciption of a fish! Please don't describe the environment or background" },
-    ];
+      {
+        role: 'user',
+        content:
+          "I want a random desciption of a fish! Please don't describe the environment or background",
+      },
+    ]
 
-    const gptModel = process.env.AZURE_GPT_MODEL;
+    const gptModel = process.env.AZURE_GPT_MODEL
 
     if (!gptModel) {
-      throw new Error("No GPT Model defined in the environment variables");
+      throw new Error('No GPT Model defined in the environment variables')
     }
 
     // using openaiclient generate a Dallee prompt for a fish on a white background using azureopenai
     const { id, created, choices, usage } =
-      await openaiClient.getChatCompletions(gptModel, messages);
-    const response = choices[0].message?.content;
+      await openaiClient.getChatCompletions(gptModel, messages)
+    const response = choices[0].message?.content
 
-    res.status(200).json({ response });
+    res.status(200).json({ response })
   } catch (error) {
-    console.error("Error generating image:", error);
-    res.status(500).json({ error: "Error generating the image" });
+    console.error('Error generating image:', error)
+    res.status(500).json({ error: 'Error generating the image' })
   }
 }

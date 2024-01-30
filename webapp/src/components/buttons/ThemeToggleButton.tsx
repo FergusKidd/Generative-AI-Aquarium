@@ -1,6 +1,5 @@
-import React from 'react';
-import { IconButton, useColorMode, IconButtonProps } from '@chakra-ui/react';
-import { FaMoon, FaSun } from 'react-icons/fa';
+import { IconButton, IconButtonProps, useColorMode } from '@chakra-ui/react'
+import { Moon, Sun } from 'lucide-react'
 
 /**
  * ThemeToggleButton allows the user to switch between light and dark mode.
@@ -10,17 +9,17 @@ import { FaMoon, FaSun } from 'react-icons/fa';
  */
 
 const ThemeToggleButton = (props: Omit<IconButtonProps, 'aria-label'>) => {
-  const { colorMode, toggleColorMode } = useColorMode();
-  const label = `Switch to ${colorMode === 'light' ? 'dark' : 'light'} mode`;
+  const { colorMode, toggleColorMode } = useColorMode()
+  const label = `Switch to ${colorMode === 'light' ? 'dark' : 'light'} mode`
 
   return (
     <IconButton
       aria-label={label}
-      icon={colorMode === 'light' ? <FaMoon /> : <FaSun />}
+      icon={colorMode === 'light' ? <Moon size="15px" /> : <Sun size="15px" />}
       onClick={toggleColorMode}
-      {...props} 
+      {...props}
     />
-  );
-};
+  )
+}
 
-export default ThemeToggleButton;
+export default ThemeToggleButton

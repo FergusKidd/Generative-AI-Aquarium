@@ -1,0 +1,38 @@
+{
+  "name": "fish",
+  "version": "0.1.0",
+  "private": true,
+  "scripts": {
+    "dev": "next dev",
+    "build": "next build",
+    "start": "next start",
+    "lint": "next lint"
+  },
+  "dependencies": {
+    "@azure/storage-blob": "12.16.0",
+    "@azure/openai": "^1.0.0-beta.11",
+    "@chakra-ui/react": "2.8.1",
+    "@emotion/react": "11.11.1",
+    "@emotion/styled": "11.11.0",
+    "@tanstack/react-query": "5.7.2",
+    "framer-motion": "10.16.4",
+    "next": "14.0.1",
+    "react": "18",
+    "react-confetti": "6.1.0",
+    "react-dom": "18",
+    "react-icons": "4.11.0",
+    "react-speech-recognition": "3.10.0",
+    "react-use": "17.5.0",
+    "uuid": "9.0.1"
+  },
+  "devDependencies": {
+    "@types/node": "20",
+    "@types/react": "18",
+    "@types/react-dom": "18",
+    "@types/react-speech-recognition": "3.9.4",
+    "@types/uuid": "9.0.7",
+    "eslint": "8",
+    "eslint-config-next": "14.0.1",
+    "typescript": "5"
+  }
+}
